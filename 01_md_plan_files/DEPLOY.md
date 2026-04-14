@@ -57,6 +57,22 @@ Last updated: 2026-04-14
 
 ---
 
+## Common Issues & Fixes
+
+### .htaccess 500 Internal Server Error (BOM issue)
+**Most common cause on Windows:** PowerShell 5.1's `-Encoding UTF8` adds a UTF-8 BOM (3 invisible bytes `EF BB BF`) at the start of the file. Apache cannot parse a `.htaccess` that starts with a BOM.
+
+**Fix:** Rewrite the file with BOM-free UTF-8:
+```powershell
+$content = [System.IO.File]::ReadAllText($htaccessPath)
+$utf8NoBom = New-Object System.Text.UTF8Encoding($false)
+[System.IO.File]::WriteAllText($htaccessPath, $content, $utf8NoBom)
+```
+
+**Prevention:** Never use `Set-Content -Encoding UTF8` for `.htaccess` or any Apache-parsed file. Always use `[System.IO.File]::WriteAllText()` with `UTF8Encoding($false)`.
+
+---
+
 ## Rollback Plan
 
 1. **Quick fix:** Re-upload the previous version of the broken file via FTP

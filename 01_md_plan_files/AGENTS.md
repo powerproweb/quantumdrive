@@ -186,6 +186,23 @@ All project cards are powered by `assets/data/projects.json`. The HTML contains 
 - Adding a new project **only** requires editing `projects.json` — no HTML changes
 - The `.htaccess` is configured for `quantumdrive.io` — do not use on a different domain without updating
 
+### PowerShell File Encoding Warning
+
+**Windows PowerShell 5.1's `-Encoding UTF8` always writes a UTF-8 BOM (byte order mark — 3 invisible bytes `EF BB BF` at the start of the file).** Apache cannot parse `.htaccess` files that start with a BOM and will throw a 500 Internal Server Error.
+
+**When writing or modifying `.htaccess` (or any file Apache reads directly) from PowerShell, always use BOM-free UTF-8:**
+
+```powershell
+# CORRECT — BOM-free UTF-8
+$utf8NoBom = New-Object System.Text.UTF8Encoding($false)
+[System.IO.File]::WriteAllText($filePath, $content, $utf8NoBom)
+
+# WRONG — adds BOM, breaks Apache
+Set-Content -Path $filePath -Value $content -Encoding UTF8
+```
+
+This applies to `.htaccess` and `robots.txt`. Standard `.html`, `.css`, `.js`, and `.json` files are not affected.
+
 ---
 
 ## Quick Reference
