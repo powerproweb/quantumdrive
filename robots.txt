@@ -1,0 +1,17 @@
+# robots.txt — {PROJECT_NAME}
+# https://{PROJECT_DOMAIN}/robots.txt
+# Last updated: {DATE}
+
+User-agent: *
+Allow: /
+
+# Block admin and API paths from crawlers
+Disallow: /api/
+Disallow: /admin/
+Disallow: /api/admin/
+Disallow: /uploads/
+Disallow: /storage/
+Disallow: /_*
+
+# Sitemap location (update once sitemap.xml exists)
+Sitemap: https://{PROJECT_DOMAIN}/sitemap.xml

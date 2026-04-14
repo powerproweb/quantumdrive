@@ -4,451 +4,29 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="color-scheme" content="dark light" />
-  <title>QuantumDrive.io | Product Hub</title>
-  <meta name="description" content="QuantumDrive is a suite of tools: qdls.io, novavault.io, and RareFolio.io. Built for real systems, real ownership, real expansion." />
-
-  <style>
-    :root{
-      /* Theme tokens (light defaults) */
-      --bg: #0b0f17;
-      --bg2:#0f172a;
-      --card:#0b1220cc;
-      --card2:#0b122099;
-      --txt:#e5e7eb;
-      --muted:#a7b0c0;
-      --line:#22304a;
-      --glow:#7c3aed;
-      --glow2:#22d3ee;
-      --good:#34d399;
-      --warn:#fbbf24;
-      --bad:#fb7185;
-
-      --radius: 18px;
-      --shadow: 0 18px 60px rgba(0,0,0,.45);
-      --shadow2: 0 10px 30px rgba(0,0,0,.35);
-      --blur: blur(14px);
-      --max: 1160px;
-
-      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-    }
-
-    /* Light mode tokens */
-    [data-theme="light"]{
-      --bg:#f7f8fb;
-      --bg2:#ffffff;
-      --card:#ffffffcc;
-      --card2:#ffffff99;
-      --txt:#0b1220;
-      --muted:#465067;
-      --line:#d6dbe6;
-      --glow:#6d28d9;
-      --glow2:#0891b2;
-      --shadow: 0 18px 60px rgba(9,18,39,.14);
-      --shadow2: 0 10px 30px rgba(9,18,39,.12);
-    }
-
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family: var(--sans);
-      color: var(--txt);
-      background: radial-gradient(1200px 700px at 15% 10%, rgba(124,58,237,.18), transparent 55%),
-                  radial-gradient(900px 600px at 85% 30%, rgba(34,211,238,.12), transparent 55%),
-                  radial-gradient(900px 700px at 55% 95%, rgba(124,58,237,.10), transparent 60%),
-                  linear-gradient(180deg, var(--bg), var(--bg2));
-      overflow-x:hidden;
-    }
-
-    a{color:inherit;text-decoration:none}
-    .wrap{max-width:var(--max); margin:0 auto; padding:28px 18px 70px}
-
-    /* Top nav */
-    .nav{
-      display:flex; align-items:center; justify-content:space-between;
-      gap:14px;
-      position:sticky; top:0;
-      z-index:20;
-      padding:14px 0;
-      backdrop-filter: var(--blur);
-      -webkit-backdrop-filter: var(--blur);
-      background: linear-gradient(180deg, rgba(15,23,42,.65), rgba(15,23,42,.18));
-      border-bottom:1px solid rgba(255,255,255,.06);
-    }
-    [data-theme="light"] .nav{
-      background: linear-gradient(180deg, rgba(255,255,255,.75), rgba(255,255,255,.28));
-      border-bottom:1px solid rgba(9,18,39,.08);
-    }
-
-    .brand{
-      display:flex; align-items:center; gap:10px;
-      font-weight:700; letter-spacing:.2px;
-    }
-    .logo{
-      width:38px; height:38px; border-radius:14px;
-      background:
-        radial-gradient(14px 14px at 30% 30%, rgba(34,211,238,.85), transparent 60%),
-        radial-gradient(16px 16px at 70% 70%, rgba(124,58,237,.85), transparent 60%),
-        linear-gradient(145deg, rgba(255,255,255,.10), rgba(255,255,255,.02));
-      box-shadow: 0 10px 30px rgba(124,58,237,.20);
-      border:1px solid rgba(255,255,255,.14);
-    }
-    [data-theme="light"] .logo{
-      border:1px solid rgba(9,18,39,.10);
-      box-shadow: 0 10px 30px rgba(124,58,237,.12);
-    }
-    .navlinks{
-      display:flex; gap:14px; align-items:center; flex-wrap:wrap; justify-content:flex-end;
-    }
-    .pill{
-      display:inline-flex; align-items:center; gap:8px;
-      padding:10px 12px;
-      border-radius: 999px;
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.04);
-      box-shadow: 0 10px 25px rgba(0,0,0,.10);
-      color: var(--muted);
-      font-size:14px;
-      transition: transform .15s ease, border-color .15s ease, background .15s ease;
-    }
-    [data-theme="light"] .pill{
-      border:1px solid rgba(9,18,39,.10);
-      background: rgba(9,18,39,.03);
-      box-shadow:none;
-    }
-    .pill:hover{transform: translateY(-1px); border-color: rgba(34,211,238,.30); background: rgba(34,211,238,.06); color: var(--txt);}
-
-    .toggle{
-      cursor:pointer; user-select:none;
-      display:inline-flex; align-items:center; gap:10px;
-      padding:10px 12px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.05);
-      color: var(--txt);
-      font-size:14px;
-      transition: transform .15s ease, border-color .15s ease, background .15s ease;
-    }
-    [data-theme="light"] .toggle{
-      border:1px solid rgba(9,18,39,.12);
-      background: rgba(9,18,39,.03);
-    }
-    .toggle:hover{transform: translateY(-1px); border-color: rgba(124,58,237,.35); background: rgba(124,58,237,.06);}
-    .dot{
-      width:10px; height:10px; border-radius:50%;
-      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.95), rgba(255,255,255,.15));
-      border:1px solid rgba(255,255,255,.16);
-      box-shadow: 0 0 0 4px rgba(124,58,237,.14);
-    }
-    [data-theme="light"] .dot{
-      border:1px solid rgba(9,18,39,.12);
-      box-shadow: 0 0 0 4px rgba(124,58,237,.10);
-    }
-
-    /* Hero */
-    .hero{
-      display:grid;
-      grid-template-columns: 1.25fr .75fr;
-      gap: 24px;
-      align-items:stretch;
-      margin-top: 22px;
-    }
-    @media (max-width: 960px){
-      .hero{grid-template-columns: 1fr; }
-    }
-
-    .heroCard{
-      position:relative;
-      overflow:hidden;
-      border-radius: var(--radius);
-      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-      border:1px solid rgba(255,255,255,.10);
-      box-shadow: var(--shadow);
-      padding: 26px;
-      min-height: 340px;
-    }
-    [data-theme="light"] .heroCard{
-      border:1px solid rgba(9,18,39,.10);
-      background: linear-gradient(180deg, rgba(255,255,255,.90), rgba(255,255,255,.65));
-    }
-
-    .heroCard:before{
-      content:"";
-      position:absolute; inset:-2px;
-      background:
-        radial-gradient(600px 240px at 15% 25%, rgba(34,211,238,.16), transparent 60%),
-        radial-gradient(600px 240px at 70% 60%, rgba(124,58,237,.18), transparent 60%),
-        radial-gradient(420px 260px at 85% 20%, rgba(251,191,36,.10), transparent 65%);
-      filter: blur(0px);
-      pointer-events:none;
-    }
-    .heroCard > *{position:relative; z-index:1}
-
-    .kicker{
-      display:inline-flex; gap:10px; align-items:center;
-      color: var(--muted);
-      font-size:13px;
-      letter-spacing:.35px;
-      text-transform: uppercase;
-      margin-bottom: 10px;
-    }
-    .kicker .chip{
-      padding:6px 10px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.04);
-      font-family: var(--mono);
-      font-size:12px;
-      color: var(--txt);
-    }
-    [data-theme="light"] .kicker .chip{
-      border:1px solid rgba(9,18,39,.10);
-      background: rgba(9,18,39,.03);
-    }
-
-    h1{
-      margin:0 0 14px 0;
-      font-size: 40px;
-      line-height: 1.06;
-      letter-spacing: -0.8px;
-    }
-    @media (max-width: 520px){
-      h1{font-size: 34px;}
-    }
-    .sub{
-      margin:0 0 18px 0;
-      color: var(--muted);
-      font-size: 16px;
-      line-height:1.55;
-      max-width: 64ch;
-    }
-
-    .ctaRow{display:flex; gap:12px; flex-wrap:wrap; margin-top: 18px;}
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center; gap:10px;
-      padding:12px 14px;
-      border-radius: 12px;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.05);
-      color: var(--txt);
-      font-weight: 600;
-      font-size: 14px;
-      transition: transform .15s ease, border-color .15s ease, background .15s ease, box-shadow .15s ease;
-      box-shadow: var(--shadow2);
-    }
-    [data-theme="light"] .btn{
-      border:1px solid rgba(9,18,39,.12);
-      background: rgba(9,18,39,.03);
-      box-shadow:none;
-    }
-    .btn:hover{transform: translateY(-1px); border-color: rgba(34,211,238,.32); background: rgba(34,211,238,.08);}
-    .btn.primary{
-      background: linear-gradient(135deg, rgba(124,58,237,.35), rgba(34,211,238,.22));
-      border-color: rgba(34,211,238,.30);
-    }
-    .btn.primary:hover{background: linear-gradient(135deg, rgba(124,58,237,.42), rgba(34,211,238,.26));}
-
-    .miniGrid{
-      display:grid; gap:12px;
-      grid-template-columns: 1fr;
-    }
-    .stat{
-      border-radius: var(--radius);
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.04);
-      padding: 14px 14px;
-    }
-    [data-theme="light"] .stat{
-      border:1px solid rgba(9,18,39,.10);
-      background: rgba(255,255,255,.70);
-    }
-    .stat strong{display:block; font-size:14px; margin-bottom:6px;}
-    .stat span{display:block; color:var(--muted); font-size:13px; line-height:1.45}
-
-    /* Products */
-    .sectionTitle{
-      margin: 34px 0 12px 0;
-      display:flex; align-items:flex-end; justify-content:space-between; gap: 16px;
-      flex-wrap:wrap;
-    }
-    .sectionTitle h2{
-      margin:0;
-      font-size: 22px;
-      letter-spacing:-.25px;
-    }
-    .sectionTitle p{
-      margin:0;
-      color: var(--muted);
-      font-size: 14px;
-      max-width: 70ch;
-    }
-
-    .cards{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-    }
-    @media (max-width: 980px){
-      .cards{grid-template-columns: 1fr;}
-    }
-
-    .card{
-      position:relative;
-      overflow:hidden;
-      border-radius: var(--radius);
-      border:1px solid rgba(255,255,255,.10);
-      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-      padding: 18px;
-      box-shadow: var(--shadow2);
-      transition: transform .18s ease, border-color .18s ease, background .18s ease;
-      min-height: 220px;
-    }
-    [data-theme="light"] .card{
-      border:1px solid rgba(9,18,39,.10);
-      background: linear-gradient(180deg, rgba(255,255,255,.92), rgba(255,255,255,.68));
-      box-shadow:none;
-    }
-    .card:hover{
-      transform: translateY(-2px);
-      border-color: rgba(124,58,237,.30);
-      background: linear-gradient(180deg, rgba(124,58,237,.08), rgba(34,211,238,.05));
-    }
-    [data-theme="light"] .card:hover{
-      background: linear-gradient(180deg, rgba(124,58,237,.06), rgba(34,211,238,.04));
-    }
-
-    .cardTop{display:flex; align-items:flex-start; justify-content:space-between; gap: 12px;}
-    .icon{
-      width:44px; height:44px; border-radius:16px;
-      border:1px solid rgba(255,255,255,.12);
-      background:
-        radial-gradient(14px 14px at 28% 28%, rgba(34,211,238,.75), transparent 60%),
-        radial-gradient(16px 16px at 70% 70%, rgba(124,58,237,.75), transparent 60%),
-        rgba(255,255,255,.05);
-      display:grid; place-items:center;
-      flex:0 0 auto;
-    }
-    [data-theme="light"] .icon{
-      border:1px solid rgba(9,18,39,.10);
-      background:
-        radial-gradient(14px 14px at 28% 28%, rgba(34,211,238,.45), transparent 60%),
-        radial-gradient(16px 16px at 70% 70%, rgba(124,58,237,.40), transparent 60%),
-        rgba(9,18,39,.03);
-    }
-    .badge{
-      font-family: var(--mono);
-      font-size: 12px;
-      padding: 6px 10px;
-      border-radius: 999px;
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.04);
-      color: var(--muted);
-      white-space:nowrap;
-    }
-    [data-theme="light"] .badge{
-      border:1px solid rgba(9,18,39,.10);
-      background: rgba(9,18,39,.03);
-    }
-
-    .card h3{margin:12px 0 8px 0; font-size: 18px; letter-spacing:-.2px;}
-    .card p{margin:0 0 12px 0; color: var(--muted); font-size: 14px; line-height:1.55}
-    .bullets{margin:0; padding-left: 18px; color: var(--muted); font-size: 13px; line-height:1.6}
-    .bullets li{margin: 4px 0}
-
-    .cardCtas{display:flex; gap:10px; flex-wrap:wrap; margin-top: 14px;}
-    .btn.small{padding:10px 12px; border-radius: 12px; font-size: 13px; box-shadow:none}
-    .btn.linkish{
-      background: transparent;
-      border-color: rgba(255,255,255,.10);
-      color: var(--muted);
-    }
-    [data-theme="light"] .btn.linkish{
-      border-color: rgba(9,18,39,.10);
-    }
-    .btn.linkish:hover{
-      color: var(--txt);
-      border-color: rgba(34,211,238,.30);
-      background: rgba(34,211,238,.06);
-    }
-
-    /* Expandable roadmap area */
-    .expand{
-      margin-top: 16px;
-      border-radius: var(--radius);
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.04);
-      overflow:hidden;
-    }
-    [data-theme="light"] .expand{
-      border:1px solid rgba(9,18,39,.10);
-      background: rgba(255,255,255,.70);
-    }
-    details{border-top:1px solid rgba(255,255,255,.08)}
-    details:first-child{border-top:none}
-    [data-theme="light"] details{border-top:1px solid rgba(9,18,39,.08)}
-    summary{
-      list-style:none;
-      cursor:pointer;
-      padding: 14px 16px;
-      display:flex; align-items:center; justify-content:space-between; gap:12px;
-      font-weight: 650;
-    }
-    summary::-webkit-details-marker{display:none}
-    .sumRight{display:flex; align-items:center; gap:10px; color: var(--muted); font-weight: 500; font-size: 13px;}
-    .chev{
-      width:28px; height:28px;
-      border-radius:10px;
-      border:1px solid rgba(255,255,255,.10);
-      display:grid; place-items:center;
-      background: rgba(255,255,255,.04);
-      transition: transform .18s ease;
-    }
-    [data-theme="light"] .chev{
-      border:1px solid rgba(9,18,39,.10);
-      background: rgba(9,18,39,.03);
-    }
-    details[open] .chev{transform: rotate(180deg)}
-    .panel{
-      padding: 0 16px 16px 16px;
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.6;
-    }
-
-    /* Footer */
-    footer{
-      margin-top: 34px;
-      padding-top: 20px;
-      border-top:1px solid rgba(255,255,255,.08);
-      color: var(--muted);
-      font-size: 13px;
-      display:flex; align-items:flex-start; justify-content:space-between; gap: 14px; flex-wrap:wrap;
-    }
-    [data-theme="light"] footer{border-top:1px solid rgba(9,18,39,.10)}
-    .fine{
-      max-width: 85ch;
-      line-height:1.6;
-    }
-    .mono{font-family: var(--mono);}
-    .sr{position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden;}
-  </style>
+  <title>QuantumDrive.io | Sovereign Systems Portfolio</title>
+  <meta name="description" content="QuantumDrive is the portfolio hub for the Sovereign Systems ecosystem — 10 projects built so everyone in the flow wins." />
+  <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
 
 <body>
   <div class="wrap">
-    <div class="nav">
+
+    <!-- ===== NAV ===== -->
+    <nav class="nav">
       <div class="brand" aria-label="QuantumDrive">
         <div class="logo" aria-hidden="true"></div>
         <div>
           <div style="line-height:1; font-size:15px;">QuantumDrive.io</div>
-          <div style="line-height:1.2; font-size:12px; color:var(--muted);">Product hub for the Quantum stack</div>
+          <div style="line-height:1.2; font-size:12px; color:var(--muted);">Sovereign Systems Portfolio</div>
         </div>
       </div>
 
       <div class="navlinks">
-        <a class="pill" href="#products">Products</a>
-        <a class="pill" href="#expand">Expand</a>
+        <a class="pill" href="#top">
+          Projects <span class="pill-count" id="projectCount">&mdash;</span>
+        </a>
+        <a class="pill" href="#sovereign">Philosophy</a>
         <a class="pill" href="#contact">Contact</a>
 
         <button id="themeBtn" class="toggle" type="button" aria-label="Toggle theme">
@@ -456,323 +34,158 @@
           <span id="themeLabel">Auto</span>
         </button>
       </div>
-    </div>
+    </nav>
 
+    <!-- ===== HERO ===== -->
     <section class="hero" id="top">
       <div class="heroCard">
         <div class="kicker">
-          <span class="chip">QuantumDrive Suite</span>
-          <span>Build systems that scale, then scale again</span>
+          <span class="chip">Sovereign Systems</span>
+          <span>Built so everyone in the flow wins</span>
         </div>
 
         <h1>
-          One brand.<br />
-          Three products live.<br />
-          Infinite room to expand.
+          One vision.<br />
+          Ten projects live.<br />
+          Infinite room to grow.
         </h1>
 
         <p class="sub">
-          QuantumDrive is the umbrella for tools that do real work:
-          link infrastructure, ledger-first loyalty, and museum-grade CNFT presentation.
-          This page is your “front door” now that the NFT experience is moving to its own domain.
+          QuantumDrive is the portfolio hub for the Sovereign Systems ecosystem.
+          Every project here is built from the ground up with zero frameworks, zero bloat,
+          and a hard constraint: the User, the Patron, the Vendor, and the Community all win.
+          No extraction. No dark patterns. No compromises.
         </p>
 
         <div class="ctaRow">
-          <a class="btn primary" href="#products">
-            <span aria-hidden="true">⟡</span>
-            Explore products
+          <a class="btn primary" href="#cat-tech">
+            <span aria-hidden="true">&#x27E1;</span>
+            Explore projects
           </a>
-          <a class="btn" href="https://qdls.io/" target="_blank" rel="noopener">
-            Visit qdls.io
-            <span aria-hidden="true">↗</span>
-          </a>
-          <a class="btn" href="https://novavault.io/" target="_blank" rel="noopener">
-            Visit novavault.io
-            <span aria-hidden="true">↗</span>
-          </a>
-          <a class="btn" href="https://qdls.io/developer-api" target="_blank" rel="noopener">
-            Developer API
-            <span aria-hidden="true">↗</span>
+          <a class="btn" href="#sovereign">
+            The philosophy
           </a>
         </div>
       </div>
 
-      <div class="miniGrid" aria-label="Highlights">
+      <div class="miniGrid" aria-label="Portfolio stats">
         <div class="stat">
-          <strong>Design goal</strong>
-          <span>Feels premium, readable, and modular. Add a fourth product by editing one JavaScript array.</span>
+          <strong>Total Projects</strong>
+          <div class="num" id="statTotal">&mdash;</div>
+          <span>Active in the portfolio</span>
         </div>
         <div class="stat">
-          <strong>Business goal</strong>
-          <span>Build a financial base and empower the middle class with sovereign tech. Quietly, efficiently, relentlessly.</span>
+          <strong>Live Domains</strong>
+          <div class="num" id="statLive">&mdash;</div>
+          <span>Deployed and serving users</span>
         </div>
         <div class="stat">
-          <strong>Brand vibe</strong>
-          <span>Museum polish with startup velocity. Serious tools, no clown UI.</span>
+          <strong>Sovereign by design</strong>
+          <span>Every project passes the four-party win check: User, Patron, Vendor, Community.</span>
         </div>
       </div>
     </section>
 
-    <div class="sectionTitle" id="products">
+    <!-- ===== PROJECT SECTIONS (rendered by main.js from projects.json) ===== -->
+    <div id="projectSections">
+      <p style="color:var(--muted); padding:24px; text-align:center;">Loading projects&hellip;</p>
+    </div>
+
+    <!-- ===== SOVEREIGN PHILOSOPHY ===== -->
+    <div class="sectionTitle" id="sovereign">
       <div>
-        <h2>The QuantumDrive stack</h2>
-        <p>Three flagship platforms now. This layout is intentionally built to add more without redesigning anything.</p>
+        <h2>What is a Sovereign System?</h2>
+        <p>The principle behind every project in this portfolio.</p>
       </div>
     </div>
 
-    <section class="cards" aria-label="Product cards">
-      <!-- QDLS -->
-      <article class="card">
-        <div class="cardTop">
-          <div class="icon" aria-hidden="true">
-            <!-- simple chain icon -->
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-              <path d="M10.5 13.5l3-3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              <path d="M7.5 16.5l-1.2 1.2a4 4 0 0 1-5.6-5.6l1.2-1.2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              <path d="M16.5 7.5l1.2-1.2a4 4 0 1 1 5.6 5.6l-1.2 1.2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-            </svg>
-          </div>
-          <div class="badge">Live</div>
-        </div>
+    <section class="sovereign-section">
+      <blockquote>Every party in the flow wins. Not tolerates. Wins.</blockquote>
 
-        <h3>QDLS</h3>
-        <p>
-          Link shortener infrastructure with smart targeting, QR codes, and analytics.
-          Built for marketing teams who like data more than vibes.
-        </p>
-        <ul class="bullets">
-          <li>Short links, QR codes, and branded experiences</li>
-          <li>Analytics, tracking, privacy controls</li>
-          <li>Developer API for integration</li>
-        </ul>
+      <p>
+        A Sovereign System is software built on a single governing constraint:
+        the User gets real value and honest design, the Patron gets a system that serves
+        their mission without extracting from their audience, the Vendor builds work worth
+        being proud of, and the Community is left better for its presence.
+      </p>
 
-        <div class="cardCtas">
-          <a class="btn small primary" href="https://qdls.io/" target="_blank" rel="noopener">Open qdls.io ↗</a>
-          <a class="btn small linkish" href="https://qdls.io/developer-api" target="_blank" rel="noopener">Developer API ↗</a>
-        </div>
-      </article>
+      <p>
+        This portfolio rejects dark patterns, artificial lock-in, engagement maximization at the
+        cost of wellbeing, opaque data practices, and extractive pricing. These are not marketing
+        positions &mdash; they are hard engineering and design constraints applied to every commit,
+        every sprint, and every decision across all ten projects.
+      </p>
 
-      <!-- NovaVault -->
-      <article class="card">
-        <div class="cardTop">
-          <div class="icon" aria-hidden="true">
-            <!-- ledger icon -->
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-              <path d="M7 4h11a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              <path d="M7 4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              <path d="M9 8h8M9 12h8M9 16h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-            </svg>
-          </div>
-          <div class="badge">Ledger-first</div>
-        </div>
-
-        <h3>NovaVault</h3>
-        <p>
-          Ledger-first loyalty OS built for Web2 today with a Web3-ready migration path later.
-          Audit-grade reward economics, not mystery points math.
-        </p>
-        <ul class="bullets">
-          <li>Earn + redeem logged with full audit trail</li>
-          <li>Vendor store, POS, checkout, dashboards</li>
-          <li>Planned 1:1 path to Cardano token layer</li>
-        </ul>
-
-        <div class="cardCtas">
-          <a class="btn small primary" href="https://novavault.io/" target="_blank" rel="noopener">Open novavault.io ↗</a>
-          <a class="btn small linkish" href="https://novavault.io/#contact" target="_blank" rel="noopener">Request demo ↗</a>
-        </div>
-      </article>
-
-      <!-- RareFolio -->
-      <article class="card">
-        <div class="cardTop">
-          <div class="icon" aria-hidden="true">
-            <!-- museum frame icon -->
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-              <path d="M5 6h14v12H5z" stroke="currentColor" stroke-width="2" />
-              <path d="M8 9h8v6H8z" stroke="currentColor" stroke-width="2" />
-              <path d="M3 6h2M19 6h2M3 18h2M19 18h2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-            </svg>
-          </div>
-          <div class="badge">Collections</div>
-        </div>
-
-        <h3>RareFolio</h3>
-        <p>
-          Museum-quality CNFT collection presentation and discovery.
-          Think “metropolitan archive” UX, not a crypto flea market.
-        </p>
-        <ul class="bullets">
-          <li>Curated collections and artifact-grade presentation</li>
-          <li>Room for certificates, provenance, and story</li>
-          <li>Built to scale across multiple institutions and drops</li>
-        </ul>
-
-        <div class="cardCtas">
-          <a class="btn small primary" href="https://RareFolio.io/" target="_blank" rel="noopener">Open RareFolio.io ↗</a>
-          <a class="btn small linkish" href="#expand">See expansion plan</a>
-        </div>
-      </article>
+      <h3>The Sovereign Check</h3>
+      <p>
+        At every major decision point &mdash; feature design, architecture choice, pricing, copy &mdash;
+        we ask four questions:
+      </p>
+      <p>
+        <strong>1. User</strong> &mdash; Does this respect and serve the user&rsquo;s actual goal?<br />
+        <strong>2. Patron</strong> &mdash; Does this serve the patron&rsquo;s mission honestly?<br />
+        <strong>3. Vendor</strong> &mdash; Does this produce sustainable, quality work?<br />
+        <strong>4. Community</strong> &mdash; Does this leave the broader ecosystem better, not worse?
+      </p>
+      <p>
+        If the answer to any question is &ldquo;no&rdquo; or &ldquo;I don&rsquo;t know,&rdquo; we pause and resolve it before proceeding.
+      </p>
     </section>
 
-    <div class="sectionTitle" id="expand">
-      <div>
-        <h2>Room to expand (without rebuilding the page)</h2>
-        <p>Drop in new product cards, add partner logos, or split this into a hub plus individual product landing pages. Your call.</p>
-      </div>
-    </div>
-
-    <section class="expand" aria-label="Expansion">
-      <details open>
-        <summary>
-          Add more products in minutes
-          <span class="sumRight">
-            Modular layout
-            <span class="chev" aria-hidden="true">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                <path d="M7 10l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </span>
-          </span>
-        </summary>
-        <div class="panel">
-          The cards are designed to be cloned or generated from a data array (if you want it fully data-driven next).
-          Keep this as the “QuantumDrive hub,” and each product keeps its own domain and deeper pages.
-        </div>
-      </details>
-
-      <details>
-        <summary>
-          Future sections that fit your mission
-          <span class="sumRight">
-            Roadmap-ready
-            <span class="chev" aria-hidden="true">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                <path d="M7 10l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </span>
-          </span>
-        </summary>
-        <div class="panel">
-          Suggested additions that support “financial base + sovereignty”:
-          <ul>
-            <li><span class="mono">Founders</span> section: explain the funding model, DAO coder support, and why it matters.</li>
-            <li><span class="mono">Trust</span> section: security posture, audit trails, provenance, and verification flows.</li>
-            <li><span class="mono">Ecosystem</span> section: partners, institutions, or merchants using NovaVault + RareFolio.</li>
-          </ul>
-        </div>
-      </details>
-
-      <details>
-        <summary>
-          Optional: convert this into a “launch console”
-          <span class="sumRight">
-            More leverage
-            <span class="chev" aria-hidden="true">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                <path d="M7 10l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </span>
-          </span>
-        </summary>
-        <div class="panel">
-          If you want this page to do more than look pretty: add a tiny “status” strip (uptime, latest release tag, last deployment),
-          and a “press kit” block. It turns the homepage into a credibility machine.
-        </div>
-      </details>
-    </section>
-
+    <!-- ===== CONTACT ===== -->
     <div class="sectionTitle" id="contact">
       <div>
         <h2>Contact</h2>
-        <p>Wire this to your real email and forms when ready. For now it’s intentionally simple.</p>
+        <p>Get in touch about any project in the portfolio.</p>
       </div>
     </div>
 
-    <section class="cards" aria-label="Contact cards" style="grid-template-columns: 1.2fr .8fr .8fr;">
-      <article class="card" style="min-height:auto;">
-        <h3 style="margin-top:0;">Want a demo, integration, or partnership?</h3>
+    <section class="contact-grid" aria-label="Contact cards">
+      <article class="card">
+        <h3>Portfolio inquiries</h3>
         <p>
-          You’re building a suite, not a single site. Let’s route inquiries to the right product fast.
-          Add a form endpoint later, or keep it mailto if you want minimal infrastructure.
+          Interested in a demo, integration, partnership, or just want to talk about
+          what we&rsquo;re building? Reach out directly.
         </p>
         <div class="cardCtas">
           <a class="btn small primary" href="mailto:hello@quantumdrive.io">Email hello@quantumdrive.io</a>
-          <a class="btn small linkish" href="https://novavault.io/#contact" target="_blank" rel="noopener">NovaVault demo ↗</a>
         </div>
       </article>
 
-      <article class="card" style="min-height:auto;">
-        <h3 style="margin-top:0;">Developers</h3>
-        <p>API-first where it matters. Keep integrations clean, versioned, and documented.</p>
+      <article class="card">
+        <h3>Developers</h3>
+        <p>API-first where it matters. Clean, versioned, documented.</p>
         <div class="cardCtas">
-          <a class="btn small primary" href="https://qdls.io/developer-api" target="_blank" rel="noopener">QDLS API ↗</a>
+          <a class="btn small primary" href="https://qdls.io/developer-api" target="_blank" rel="noopener">QDLS API &#x2197;</a>
         </div>
       </article>
 
-      <article class="card" style="min-height:auto;">
-        <h3 style="margin-top:0;">Collectors</h3>
-        <p>RareFolio is where presentation becomes provenance. The museum vibe is not optional.</p>
+      <article class="card">
+        <h3>Collectors</h3>
+        <p>RareFolio is where presentation becomes provenance.</p>
         <div class="cardCtas">
-          <a class="btn small primary" href="https://RareFolio.io/" target="_blank" rel="noopener">RareFolio ↗</a>
+          <a class="btn small primary" href="https://rarefolio.io/" target="_blank" rel="noopener">RareFolio &#x2197;</a>
         </div>
       </article>
     </section>
 
+    <!-- ===== FOOTER ===== -->
     <footer>
       <div class="fine">
-        <div><strong>QuantumDrive.io</strong> · Product Hub</div>
+        <div><strong>QuantumDrive.io</strong> &middot; Sovereign Systems Portfolio</div>
         <div>
-          Built to expand: add products, domains, and institutions without redesigning the front door.
-          Keep shipping: financial base first, sovereignty always.
+          Built to expand: add projects, domains, and teams without redesigning the front door.
+          Every party in the flow wins.
         </div>
       </div>
       <div class="mono">
-        <div>© <span id="year"></span> QuantumDrive</div>
+        <div>&copy; <span id="year"></span> QuantumDrive</div>
         <div style="margin-top:6px; color:var(--muted);">Theme: <span id="themeState">Auto</span></div>
       </div>
     </footer>
+
   </div>
 
-  <script>
-    (function(){
-      const root = document.documentElement;
-      const btn = document.getElementById('themeBtn');
-      const label = document.getElementById('themeLabel');
-      const themeState = document.getElementById('themeState');
-
-      const YEAR = document.getElementById('year');
-      YEAR.textContent = String(new Date().getFullYear());
-
-      // Theme cycle: auto -> dark -> light -> auto
-      const order = ["auto","dark","light"];
-
-      function setTheme(mode){
-        if(mode === "auto"){
-          root.removeAttribute("data-theme");
-          localStorage.removeItem("qd_theme");
-          label.textContent = "Auto";
-          themeState.textContent = "Auto";
-          return;
-        }
-        root.setAttribute("data-theme", mode);
-        localStorage.setItem("qd_theme", mode);
-        label.textContent = mode[0].toUpperCase() + mode.slice(1);
-        themeState.textContent = mode[0].toUpperCase() + mode.slice(1);
-      }
-
-      // init from storage
-      const saved = localStorage.getItem("qd_theme");
-      if(saved === "dark" || saved === "light") setTheme(saved);
-      else setTheme("auto");
-
-      btn.addEventListener("click", () => {
-        const current = (localStorage.getItem("qd_theme") || "auto");
-        const idx = order.indexOf(current);
-        const next = order[(idx + 1) % order.length];
-        setTheme(next);
-      });
-    })();
-  </script>
+  <script src="assets/js/main.js"></script>
 </body>
 </html>

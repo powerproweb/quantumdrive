@@ -1,0 +1,175 @@
+[
+  {
+    "id": 5,
+    "name": "QDLS.io",
+    "domain": "https://qdls.io",
+    "tagline": "Link shortener infrastructure with smart targeting, QR codes, and analytics.",
+    "status": "live",
+    "category": "tech",
+    "icon": "link",
+    "bullets": [
+      "Short links, QR codes, and branded experiences",
+      "Analytics, tracking, privacy controls",
+      "Developer API for integration"
+    ],
+    "ctas": [
+      { "label": "Open qdls.io", "url": "https://qdls.io/" },
+      { "label": "Developer API", "url": "https://qdls.io/developer-api" }
+    ]
+  },
+  {
+    "id": 10,
+    "name": "RecallOS",
+    "domain": "https://recallos.com",
+    "tagline": "Persistent AI memory that lives on your machine. Open source. Free forever.",
+    "status": "live",
+    "category": "tech",
+    "icon": "brain",
+    "bullets": [
+      "96.6% LongMemEval R@5 — highest-scoring local AI memory",
+      "Data Vault structure, RecallScript 30× compression",
+      "MCP gateway for Claude, ChatGPT, Cursor"
+    ],
+    "ctas": [
+      { "label": "Open recallos.com", "url": "https://recallos.com" },
+      { "label": "GitHub", "url": "https://github.com/user/recallos" }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "NovaVault.io",
+    "domain": "https://novavault.io",
+    "tagline": "Ledger-first loyalty OS. Web2 now, Web3-ready later.",
+    "status": "live",
+    "category": "tech",
+    "icon": "ledger",
+    "bullets": [
+      "Earn + redeem logged with full audit trail",
+      "Vendor store, POS, checkout, dashboards",
+      "Planned 1:1 path to Cardano token layer"
+    ],
+    "ctas": [
+      { "label": "Open novavault.io", "url": "https://novavault.io/" },
+      { "label": "Request demo", "url": "https://novavault.io/#contact" }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "AuthorJuanJose.io",
+    "domain": "https://authorjuanjose.io",
+    "tagline": "Steampunk sci-fi author site. Books, ARC Reader Club, and worldbuilding.",
+    "status": "live",
+    "category": "publishing",
+    "icon": "book",
+    "bullets": [
+      "Fiction and non-fiction book catalog",
+      "ARC Reader Club with membership tiers",
+      "Steampunk design system with gear dividers"
+    ],
+    "ctas": [
+      { "label": "Open authorjuanjose.io", "url": "https://authorjuanjose.io/" }
+    ]
+  },
+  {
+    "id": 7,
+    "name": "QuantumDigitalPublishing.io",
+    "domain": "https://quantumdigitalpublishing.io",
+    "tagline": "Media publishing company — Web2 and Web3 technologies.",
+    "status": "placeholder",
+    "category": "publishing",
+    "icon": "newspaper",
+    "bullets": [
+      "Publishing arm for the QuantumDrive ecosystem",
+      "Digital and print media distribution",
+      "Currently a placeholder — full site coming soon"
+    ],
+    "ctas": [
+      { "label": "View placeholder", "url": "https://quantumdigitalpublishing.io/" }
+    ]
+  },
+  {
+    "id": 8,
+    "name": "QuantumStoryForge.io",
+    "domain": "https://quantumstoryforge.io",
+    "tagline": "AetherForge Worldbuilding Hub — steampunk tools, AI writer personas, and interactive calculators.",
+    "status": "live",
+    "category": "publishing",
+    "icon": "quill",
+    "bullets": [
+      "Council of 8 — specialized AI writer personas",
+      "Steampunk Stardate Calculator",
+      "In-universe artifact pages and worldbuilding tools"
+    ],
+    "ctas": [
+      { "label": "Open quantumstoryforge.io", "url": "https://quantumstoryforge.io/" }
+    ]
+  },
+  {
+    "id": 9,
+    "name": "PowerProWeb.com",
+    "domain": "https://powerproweb.com",
+    "tagline": "Web design, hosting, social media, print & graphics. 30+ years in business.",
+    "status": "building",
+    "category": "services",
+    "icon": "globe",
+    "bullets": [
+      "Full-service web agency — design to deployment",
+      "Hosting, SEO, social media, print graphics",
+      "Custom support ticket system"
+    ],
+    "ctas": [
+      { "label": "Open powerproweb.com", "url": "https://powerproweb.com/" }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "DrJessie.life",
+    "domain": "https://drjessie.life",
+    "tagline": "Professional site for Jessie Keener, N.D. — Naturopathic Doctor and Human Design Specialist.",
+    "status": "live",
+    "category": "services",
+    "icon": "leaf",
+    "bullets": [
+      "Holistic naturopathic care, longevity, breathwork",
+      "Books, courses, downloadable resources",
+      "Newsletter via MailerLite integration"
+    ],
+    "ctas": [
+      { "label": "Open drjessie.life", "url": "https://drjessie.life/" }
+    ]
+  },
+  {
+    "id": 1,
+    "name": "RareFolio.io",
+    "domain": "https://rarefolio.io",
+    "tagline": "Tokenized silver bar CNFT collections on Cardano. Provenance-first.",
+    "status": "live",
+    "category": "ecosystem",
+    "icon": "diamond",
+    "bullets": [
+      "Museum-grade CNFT presentation and discovery",
+      "Art-directed PDF certificates with Dompdf",
+      "Multi-bar, DB-driven block routing system"
+    ],
+    "ctas": [
+      { "label": "Open rarefolio.io", "url": "https://rarefolio.io/" }
+    ]
+  },
+  {
+    "id": 6,
+    "name": "QuantumDrive.io",
+    "domain": "https://quantumdrive.io",
+    "tagline": "The portfolio hub. You are here.",
+    "status": "live",
+    "category": "ecosystem",
+    "icon": "hub",
+    "bullets": [
+      "Sovereign Systems portfolio showcase",
+      "Data-driven project registry",
+      "Add a project by editing one JSON file"
+    ],
+    "ctas": [
+      { "label": "You are here", "url": "#top" }
+    ]
+  }
+]
