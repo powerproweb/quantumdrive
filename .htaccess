@@ -1,10 +1,10 @@
-﻿# <<<|||\\---*** QuantumDrive | https://quantumdrive.io/ ***---///|||>>>
+# <<<|||\\---*** QuantumDrive | https://quantumdrive.io/ ***---///|||>>>
 # Last updated: 2026-04-14
 # Backup of previous version: .htaccess.bak-2026-04-14
 #
 # SEARCH & REPLACE BEFORE USE:
-#   quantumdrive.io  â†’  e.g. rarefolio.io
-#   QuantumDrive    â†’  e.g. Rarefolio
+#   quantumdrive.io  →  e.g. rarefolio.io
+#   QuantumDrive    →  e.g. Rarefolio
 #
 # ===========================================================================
 # 1. CUSTOM ERROR PAGES
@@ -16,8 +16,8 @@ ErrorDocument 404 /404.html
 ErrorDocument 500 /404.html
 
 # ===========================================================================
-# 2. REWRITES â€” HTTPS + NON-WWW CANONICALIZATION
-#    All traffic â†’ https://quantumdrive.io (matches canonical URLs)
+# 2. REWRITES — HTTPS + NON-WWW CANONICALIZATION
+#    All traffic → https://quantumdrive.io (matches canonical URLs)
 # ===========================================================================
 <IfModule mod_rewrite.c>
   RewriteEngine On
@@ -30,7 +30,7 @@ ErrorDocument 500 /404.html
   RewriteCond %{HTTPS} off
   RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
-  # Force non-www  (www â†’ non-www)
+  # Force non-www  (www → non-www)
   RewriteCond %{HTTP_HOST} ^www\.quantumdrive.io$ [NC]
   RewriteRule ^(.*)$ https://quantumdrive.io/$1 [L,R=301]
 
@@ -66,16 +66,16 @@ ErrorDocument 500 /404.html
   # Control referrer info sent to other sites
   Header set Referrer-Policy "strict-origin-when-cross-origin"
 
-  # Permissions Policy â€” disable features the site doesn't use
+  # Permissions Policy — disable features the site doesn't use
   Header set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=()"
 
-  # HSTS â€” tell browsers to always use HTTPS (1 year)
+  # HSTS — tell browsers to always use HTTPS (1 year)
   Header set Strict-Transport-Security "max-age=31536000; includeSubDomains" env=HTTPS
 
   # XSS Protection (legacy browsers)
   Header set X-XSS-Protection "1; mode=block"
 
-  # Content-Security-Policy â€” tighten as needed per project
+  # Content-Security-Policy — tighten as needed per project
   # Header set Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:;"
 </IfModule>
 
@@ -86,15 +86,15 @@ ErrorDocument 500 /404.html
 <IfModule mod_expires.c>
   ExpiresActive On
 
-  # HTML â€” short cache so content updates are seen quickly
+  # HTML — short cache so content updates are seen quickly
   ExpiresByType text/html                  "access plus 1 hour"
 
-  # CSS & JS â€” 1 month (cache-bust by renaming or query string on deploy)
+  # CSS & JS — 1 month (cache-bust by renaming or query string on deploy)
   ExpiresByType text/css                   "access plus 1 month"
   ExpiresByType application/javascript     "access plus 1 month"
   ExpiresByType text/javascript            "access plus 1 month"
 
-  # Images â€” 1 year (these rarely change)
+  # Images — 1 year (these rarely change)
   ExpiresByType image/jpeg                 "access plus 1 year"
   ExpiresByType image/png                  "access plus 1 year"
   ExpiresByType image/gif                  "access plus 1 year"
@@ -103,13 +103,13 @@ ErrorDocument 500 /404.html
   ExpiresByType image/x-icon               "access plus 1 year"
   ExpiresByType image/vnd.microsoft.icon   "access plus 1 year"
 
-  # Fonts â€” 1 year
+  # Fonts — 1 year
   ExpiresByType font/woff                  "access plus 1 year"
   ExpiresByType font/woff2                 "access plus 1 year"
   ExpiresByType application/font-woff      "access plus 1 year"
   ExpiresByType application/font-woff2     "access plus 1 year"
 
-  # PDFs â€” 1 month
+  # PDFs — 1 month
   ExpiresByType application/pdf            "access plus 1 month"
 
   # Manifest & JSON
@@ -191,7 +191,7 @@ FileETag MTime Size
 Options -Indexes
 
 # ===========================================================================
-# 10. IMAGE HOTLINK PROTECTION (optional â€” uncomment to enable)
+# 10. IMAGE HOTLINK PROTECTION (optional — uncomment to enable)
 #     Blocks other sites from embedding your images and stealing bandwidth.
 # ===========================================================================
 # <IfModule mod_rewrite.c>
@@ -203,11 +203,10 @@ Options -Indexes
 # </IfModule>
 
 # ===========================================================================
-# 11. PHP HANDLER (cPanel / BlueHost â€” adjust version as needed)
+# 11. PHP HANDLER (cPanel / BlueHost — adjust version as needed)
 # ===========================================================================
-<IfModule mime_module>
-  AddHandler application/x-httpd-ea-php81 .php .php8 .phtml
-</IfModule>
+# <IfModule mime_module>
+#   AddHandler application/x-httpd-ea-php81 .php .php8 .phtml
+# </IfModule>
 
-# <<<|||\\---*** End â€” QuantumDrive .htaccess ***---///|||>>>
-
+# <<<|||\\---*** End — QuantumDrive .htaccess ***---///|||>>>
